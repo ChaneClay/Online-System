@@ -78,7 +78,8 @@ class Register
 			echo "<script>alert('密码不相同，请重新输入!');history.go(-1);</script>";
 			exit();
 		}
-		$this->pwd = md5($this->pwd);
+		// $this->pwd = md5($this->pwd);
+		$this->pwd = $this->pwd;
 	}
 	public function checkEmail()
 	{

@@ -7,6 +7,7 @@ class Login
 	public $email;
 	public $password;
 	public $code;
+	public $rem;
 	function __construct()
 	{
 		if (!isset($_POST['login'])) {
@@ -18,6 +19,7 @@ class Login
 		$this->email = $_POST['email'];
 		$this->password = $_POST['password'];
 		$this->code = $_POST['code'];
+		$this->rem = $_POST['rem'];
 	}
 
 	public  function  checkMail(){
@@ -38,7 +40,8 @@ class Login
 				echo "<script>alert('密码长度6-20位，请重新输入!');history.go(-1);</script>";
 				exit();
 			}else{
-				$this->password = md5($this->password);
+				// $this->password = md5($this->password);
+				$this->password = $this->password;
 			}
 		}else{
 			echo "<script>alert('密码不能为空!');history.go(-1);</script>";
@@ -68,6 +71,15 @@ class Login
 		}else{								// 用户输入的邮箱和密码与数据库的相匹配，则允许登陆
 			$db->close();
 			$_SESSION['user'] = $result;	// 使用session记录用户的信息		
+
+
+
+			$_SESSION['email'] = $this->email;
+			$_SESSION['password'] = $this->password;
+
+			if ($this->rem == 1) {
+			  	$_SESSION['rem'] = '1';
+			}
 	
 			echo "<script>location.href = '../index.php'</script>";		// 跳转到首页
 			exit();

@@ -131,14 +131,27 @@
                   <div class="form-group">
                     <label for="email" class="col-sm-4 control-label">邮箱:</label>
                     <div class="col-sm-6">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="" value="<?php echo $_COOKIE['email']?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="password" class="col-sm-4 control-label">密码:</label>
                     <div class="col-sm-6">
-                      <input type="password" class="form-control" name="password" placeholder="password" minlength="6" maxlength="20" required="">
+                      <input type="password" class="form-control" name="password" placeholder="password" minlength="6" maxlength="20" required="" value="<?php echo $_COOKIE['password']?>">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="password" class="col-sm-4 control-label">记住我:</label>
+                    <div class="col-sm-3">
+                      <label class="checkbox-inline">
+                        <input type="radio" name="rem" id="yes" value="1" checked> 是
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="radio" name="rem" id="optionsRadios4" value="0"> 否
+                      </label>
                     </div>
                   </div>
 

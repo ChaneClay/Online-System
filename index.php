@@ -2,13 +2,49 @@
 
 session_start();
 
-if (!isset($_SESSION['user'])) {    //session为空
 
-  header('location:welcome.php');   //返回起始页面
-    exit();
+
+if (!isset($_SESSION['user'])) {        //session为空
+
+    header('location:welcome.php');     //返回起始页面
+    exit(); 
+}else{        
+              //选择记住我 设置cookie
+    if (isset($_SESSION['rem'])) {      
+       echo "记住我";
+        setcookie('email',$_SESSION['email'],time()+3600);          //一小时
+        setcookie('password',$_SESSION['password'],time()+3600);    //一小时
+
+        unset($_SESSION['rem']);
+
+    }else{    //上一次记住了，这次没有记住
+        if (isset($_COOKIE['email'])) {   //取消cookie
+          setcookie('email', '', time()-1);
+          setcookie('password', '', time()-1);
+        }
+    }
 }
 
+
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
